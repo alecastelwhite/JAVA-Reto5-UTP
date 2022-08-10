@@ -1,0 +1,34 @@
+import java.sql.*;
+import javax.swing.table.*;
+
+public class Proyectos extends DefaultTableModel{
+    
+    ResultSet datos;
+    public Proyectos(){
+        this.addColumn("ID Proyecto");
+        this.addColumn("Constructora");
+        this.addColumn("Número de Habitaciones");
+        this.addColumn("Ciudad");
+        
+        try {
+            Connection c = DriverManager.getConnection("jdbc:sqlite://C:/UTP/Ciclo 2/RETO5/ProyectosConstruccion.db");
+  
+            Statement stmt = c.createStatement();
+            String consulta = "SELECT ID_Proyecto AS 'ID Proyecto', Constructora, Numero_Habitaciones AS 'Numero de habitaciones', Ciudad FROM Proyecto WHERE Clasificacion = 'Casa Campestre' AND (Ciudad = 'Barranquilla' OR Ciudad = 'Cartagena' OR Ciudad = 'Santa Marta')";
+            datos = stmt.executeQuery(consulta);
+            
+            while(datos.next()){
+                Object [] fila = new Object[4];
+                for(int i = 0; i<4; i++){
+                    fila[i] = datos.getObject(i+1);
+                }
+                this.addRow(fila);
+            }
+            
+            stmt.close();
+            c.close();
+            } catch ( Exception e ) {
+            System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+          }
+    }
+}
