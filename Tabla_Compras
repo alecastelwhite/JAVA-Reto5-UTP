@@ -1,0 +1,15 @@
+import javax.swing.*;
+import java.awt.*;
+
+public class Tabla_Compras extends JPanel {
+    Compras informe3 = new Compras();
+    public Tabla_Compras()
+    {
+        setLayout(new BorderLayout());
+        
+        JTable tabla = new JTable(informe3);
+
+        JScrollPane panel = new JScrollPane(tabla);
+        add(panel, BorderLayout.CENTER);
+    }
+}
