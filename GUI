@@ -1,0 +1,41 @@
+import java.awt.*;
+import javax.swing.*;
+
+public class GUI extends JFrame {
+    
+    public void informe(){
+        
+        setTitle("Reporte");
+        setSize(400,480);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        
+        JTabbedPane pestañas = new JTabbedPane();
+        
+        JPanel figura1 = new JPanel();
+        figura1.setLayout(new BorderLayout());
+        Tabla_Lider tabla1 = new Tabla_Lider();
+        figura1.add(tabla1, BorderLayout.CENTER);
+        pestañas.addTab("Primer informe", figura1);
+        
+        JPanel figura2 = new JPanel();
+        figura2.setLayout(new BorderLayout());
+        Tabla_Proyectos tabla2 = new Tabla_Proyectos();
+        figura2.add(tabla2, BorderLayout.CENTER);
+        pestañas.addTab("Segundo informe", figura2);
+        
+        JPanel figura3 = new JPanel();
+        figura3.setLayout(new BorderLayout());
+        Tabla_Compras tabla3 = new Tabla_Compras();
+        figura3.add(tabla3, BorderLayout.CENTER);
+        pestañas.addTab("Tercer informe", figura3);
+        
+        getContentPane().add(pestañas);
+
+        setVisible(true);
+    }
+
+    public static void main(String[] args) throws Exception{
+        GUI ventana = new GUI();
+        ventana.informe();
+    }
+}
