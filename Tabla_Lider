@@ -1,0 +1,15 @@
+import javax.swing.*;
+import java.awt.*;
+
+public class Tabla_Lider extends JPanel {
+    Lider informe1 = new Lider();
+    public Tabla_Lider()
+    {
+        setLayout(new BorderLayout());
+        
+        JTable tabla = new JTable(informe1);
+
+        JScrollPane panel = new JScrollPane(tabla);
+        add(panel, BorderLayout.CENTER);
+    }
+}
